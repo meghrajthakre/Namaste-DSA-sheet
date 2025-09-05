@@ -23,3 +23,9 @@ var maxProfit = function (prices) {
 };
 let prices = [7,1,5,3,6,4];
 console.log(maxProfit(prices)); // 5  (buy at 1, sell at 6)
+
+
+for (let i = 0; i < prices.length; i++) {
+    maxProfit = Math.max(maxProfit, prices[i] - min);
+    min = Math.min(min, prices[i]);
+}
