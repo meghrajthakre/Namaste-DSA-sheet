@@ -1,15 +1,15 @@
 // (n! = n × (n-1) × (n-2) … × 1)
 
-function sum(n) {
+function fact(n) {
     // Base case: factorial of 0 or 1 is 1
     if (n == 0) return 1;
 
     // Recursive case: multiply current n with factorial of (n-1)
-    return n * sum(n - 1);
+    return n * fact(n - 1);
 }
 
 // Find factorial of 5
-let result = sum(10);
+let result = fact(5);
 
 console.log(result);  // Output: 120
 
