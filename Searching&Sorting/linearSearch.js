@@ -7,6 +7,7 @@ function findIndex(arr,target){
        }
         
     }
+    return -1
 }
 
 
