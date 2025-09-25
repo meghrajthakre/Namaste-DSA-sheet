@@ -6,7 +6,7 @@
 
 var middleNode = function (head) {
     let slow = head;
-    let fast = head;
+    let fast = head.next;
     while (slow !== fast) {
         if (!fast && !fast.next) return false
         slow = slow.next;
