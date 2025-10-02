@@ -43,3 +43,47 @@ var addTwoNumbers = function (l1, l2) {
 // A new node is created for the digit part(sum % 10) and appended to the result.
 
 // Loop continues until all nodes are processed and any remaining carry is handled.
+
+
+
+
+
+
+
+
+// without using dummy node 
+
+
+var mergeTwoLists = function (l1, l2) {
+    if (!l1) return l2;
+    if (!l2) return l1;
+   
+    let curr = null
+
+    if (l1.val < l2.val) {
+        curr = l1
+        l1 = l1.next
+    } else {
+        curr = l1
+        l1 = l1.next
+    }
+    let start = curr
+
+
+    while (l1 && l2) {
+        if (l1.val < l2.val) {
+            curr.next = l1
+            l1 = l1.next
+        }
+        else {
+            curr.next = l2
+            l2 = l2.next
+        }
+        curr = curr.next
+    }
+
+    if (l1) curr.next = l1;
+    if (l2) curr.next = l2;
+
+    return start
+};
