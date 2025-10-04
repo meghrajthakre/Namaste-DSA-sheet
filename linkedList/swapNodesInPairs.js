@@ -34,3 +34,23 @@ var swapPairs = function (head) {
     // Return the new head of the list
     return dummy.next;
 };
+
+// recursive aproch
+
+var swapPairs = function (head) {
+    // Base case: If list is empty or has only one node, no swap possible
+    if (!head || !head.next) return head
+
+    // Take first two nodes
+    let l = head
+    let r = head.next
+
+    // Recursively swap the rest of the list from r.next onwards
+    l.next = swapPairs(r.next)
+
+    // Swap l and r
+    r.next = l
+
+    // Return new head (after swapping, r becomes the head of this pair)
+    return r
+};
