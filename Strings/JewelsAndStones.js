@@ -2,18 +2,18 @@
 
 // Letters are case sensitive, so "a" is considered a different type of stone from "A".
 
- 
+
 
 // aproach 1
 var numJewelsInStones = function (jewels, stones) {
     let count = 0;
 
     for (let i = 0; i < stones.length; i++) {
-        if(jewels.includes(stones[i])){
+        if (jewels.includes(stones[i])) {
             count++
         }
     }
-return count
+    return count
 };
 
 // aproach 2   O(m*n) O(1)
@@ -21,17 +21,33 @@ var numJewelsInStones = function (jewels, stones) {
     let count = 0;
 
     for (let i = 0; i < stones.length; i++) {
-        
+
         for (let j = 0; j < jewels.length; j++) {
-            
-            if(jewels[j] === stones[i]){
+
+            if (jewels[j] === stones[i]) {
                 count++
                 break
             }
-            
+
         }
     }
-return count
+    return count
 };
 
 
+// aproach 3 
+
+var numJewelsInStones = function (jewels, stones) {
+    let count = 0;
+    let table = new Set()
+    for (let i = 0; i < jewels.length; i++) {
+        table.add(jewels[i])
+    }
+    for (let j = 0; j < stones.length; j++) {
+        if (table.has(stones[i])) {
+            count++
+        }
+
+    }
+    return count
+};
