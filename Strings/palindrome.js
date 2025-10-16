@@ -10,10 +10,8 @@ function isPalindrome(s) {
         }
 
     }
-    let reverse = filterStr.split('').reverse().join('')
-    console.log(reverse);
-    
-
+    // another way of reverse the string
+    // let reverse = filterStr.split('').reverse().join('')
     return filterStr == rev
 
 
