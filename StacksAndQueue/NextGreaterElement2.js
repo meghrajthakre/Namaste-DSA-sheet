@@ -40,3 +40,35 @@ var nextGreaterElements = function (nums) {
     // Step 5: Return only first half (since array was doubled)
     return ans.slice(0, n / 2);
 };
+
+
+
+
+// optimize version
+
+
+var nextGreaterElements = function (arr) {
+    let n = arr.length;
+    let stack = [];
+    let ans = Array(n).fill(-1);
+    stack.push(arr[n - 1])
+
+    for (let i = (2 * n) - 2; i >= 0; i--) {
+        while (stack.length) {
+            let top = stack[stack.length - 1];
+            if (arr[i % n] >= top) {
+                stack.pop()
+            }
+            else {
+                ans[i % n] = top;
+                break
+            }
+        }
+        if (stack.length == 0) {
+            ans[i % n] = -1
+        }
+
+        stack.push(arr[i % n])
+    }
+    return ans.slice(0, n)
+};
