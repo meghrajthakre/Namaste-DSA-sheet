@@ -1,4 +1,4 @@
-
+// 424. Longest Repeating Character Replacement
 // You are given a string s and an integer k. You can choose any character of the string and change it to any other uppercase English character. You can perform this operation at most k times.
 
 // Return the length of the longest substring containing the same letter you can get after performing the above operations.
@@ -41,3 +41,14 @@ const isWindowValid = function (map, k) {
 
     return (totalCount - maxCount <= k);
 };
+
+
+
+// 1️⃣ Add the new character first
+// 2️⃣ Check if window valid
+// 3️⃣ If invalid → shrink
+// 4️⃣ If valid → update max
+// 5️⃣ Move j forward
+// 6️⃣ No double-counting
+// 7️⃣ No undefined index
+// 8️⃣ Window always represents correct state
