@@ -26,3 +26,40 @@ var postorderTraversal = function (root) {
 
     return ans;
 };
+
+
+// using one stack // 145. Binary Tree Postorder Traversal
+
+var postorderTraversal = function(root) {
+    let stack = [];           // Stack to simulate recursion
+    let curr = root;          // Current node pointer
+    let ans = [];             // Result array (postorder list)
+    let lastVisited = null;   // Tracks the last visited node
+
+    // Traverse until both stack is empty and current node is null
+    while (curr || stack.length) {
+
+        // 1️⃣ Push all left nodes to stack
+        while (curr) {
+            stack.push(curr);
+            curr = curr.left;
+        }
+
+        // Peek the top node from stack (don't pop yet)
+        let peek = stack[stack.length - 1];
+
+        // 2️⃣ If right child exists and not yet visited → go right
+        if (peek.right && peek.right !== lastVisited) {
+            curr = peek.right;
+        } 
+        else {
+            // 3️⃣ Otherwise visit the node (postorder moment)
+            ans.push(peek.val);
+
+            // Mark this node as visited
+            lastVisited = stack.pop();
+        }
+    }
+
+    return ans;
+};
