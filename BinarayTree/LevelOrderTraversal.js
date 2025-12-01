@@ -29,3 +29,33 @@ var levelOrder = function (root) {
 
     return ans;   // Return the result containing all levels
 };
+
+// level order traversal (DFS )
+var levelOrder = function (root) {
+    // If tree is empty, return an empty array
+    if (!root) return [];
+
+    let ans = [];   // This will store arrays of each level
+    let level = 0;
+
+    // Recursive function to traverse the tree
+    const traversal = (curr, level) => {
+        // If this level does not exist in ans, create an empty array
+        if (!ans[level]) ans[level] = [];
+
+        // Push the current node's value into the correct level array
+        ans[level].push(curr.val);
+
+        // Traverse left child (if exists), increasing the level
+        if (curr.left) traversal(curr.left, level + 1);
+
+        // Traverse right child (if exists), increasing the level
+        if (curr.right) traversal(curr.right, level + 1);
+    };
+
+    // Start traversal from the root at level 0
+    traversal(root, level);
+
+    // Return the final level order structure
+    return ans;
+};
